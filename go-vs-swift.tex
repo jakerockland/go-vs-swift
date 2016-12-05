@@ -1,4 +1,5 @@
 %!TEX output_directory = <<cache>>
+%!TEX options = --shell-escape
 
 \documentclass[letterpaper]{article}
 \usepackage[utf8]{inputenc}
@@ -10,7 +11,7 @@
 \usepackage{url}
 
 \usepackage{minted}
-\usemintedstyle{pastie}
+\usemintedstyle{bw}
 
 \begin{document}
 
@@ -56,7 +57,7 @@ In Swift, such an application can be written as:
 
 \mint{swift}|print("Hello, world!")|
 
-This line alone is a complete program in Swift. No standard libraries need to be imported for string handling and I/O, as such libraries are included by default. Additionally, code written at a global scope is used as the entry point for the program, removing the need for a \mint{swift}|main()| function [16]. To compile and run the above hello world example:
+This line alone is a complete program in Swift. No standard libraries need to be imported for string handling and I/O, as such libraries are included by default. Additionally, code written at a global scope is used as the entry point for the program, removing the need for a main() function [16]. To compile and run the above hello world example:
 
 \begin{minted}{bash}
 swiftc hello.swift -o hello
