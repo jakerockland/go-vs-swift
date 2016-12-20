@@ -182,5 +182,6 @@ TSWLatexianTemp*
 ## Minted
 _minted-go-vs-swift
 
-## Poster
+## Poster & PDF
 poster/
+*.pdf
