@@ -64,7 +64,7 @@ swiftc hello.swift -o hello
 ./hello
 \end{minted}
 
-In Go, we can write such an application as:
+In Go, we can write such an application as \footnote{\url{https://gobyexample.com/hello-world}}:
 
 \begin{minted}{go}
 package main
@@ -149,9 +149,9 @@ if name == "Barack Obama" {
 }
 \end{minted}
 
-Both Swift and Go support fairly expressive switch statements; however, Swift has the benefit of supporting optionals and Go has the benefit of representing switches without pattern matching, avoiding the requirement that each case is a constant—making Go switch statements more like extended if-else statements \footnote{\url{https://developer.apple.com/library/content/documentation/Swift/ Conceptual/Swift_Programming_Language/ControlFlow.html}} \footnote{\url{https://golang.org/doc/effective_go.html#control-structures}}.
+Both Swift and Go support fairly expressive switch statements; however, Swift has the benefit of supporting optionals and Go has the benefit of representing switches without pattern matching, avoiding the requirement that each case is a constant—making Go switch statements more like extended if-else statements.
 
-Neither language supports implicit fall-throughs, both support multiple cases as comma separated lists, and both support interval matching/checking. In Swift, switch statements must always be exhaustive, while Go has no such requirement \footnote{\url{https://developer.apple.com/library/content/documentation/Swift/ Conceptual/Swift_Programming_Language/ControlFlow.html}} \footnote{\url{https://golang.org/doc/effective_go.html#control-structures}}.
+Neither language supports implicit fall-throughs, both support multiple cases as comma separated lists, and both support interval matching/checking. In Swift, switch statements must always be exhaustive, while Go has no such requirement.
 
 Such differences between switch statements in Swift and Go can be examined in the following example:
 
@@ -179,7 +179,7 @@ default:
 }
 \end{minted}
 
-Swift supports for-in, while, and repeat-while loops that take the following formats [27]:
+Swift supports for-in, while, and repeat-while loops that take the following formats:
 
 \begin{minted}{swift}
 for card in deck {
@@ -196,7 +196,7 @@ repeat {
 } while hand.count < 5
 \end{minted}
 
-Go on the other hand does not have a do-while or repeat-while style loop. Instead, Go has only one for-loop that takes influence from C, but combines the functionality of the while and for loops, as is done in the following \footnote{\url{https://golang.org/doc/effective_go.html#control-structures}}:
+Go on the other hand does not have a do-while or repeat-while style loop. Instead, Go has only one for-loop that takes influence from C, but combines the functionality of the while and for loops, as is done in the following:
 
 \begin{minted}{go}
 for _, card := range deck {
