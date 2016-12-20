@@ -25,7 +25,7 @@ This project stands as a comparative exploration of Go and Swift, the recent fla
 
 \section{Introduction}
 
-The current technology landscape is often driven by two major companies: Apple and Google. With market capitalizations of \$520.93 billion \footnote{\url{http://finance.yahoo.com/quote/aapl}} and \$586.02 billion \footnote{\url{http://finance.yahoo.com/quote/goog}}, respectively, Apple (\$AAPL) and Google (\$GOOG) are the two highest valued companies in the world at the time of writing. Along with making top-class products that millions of consumers use on a regular basis, both Apple and Google have continually contributed to an ecosystem of tools built for developers to create new software, whether for their platforms or not. In the past decade, one way this has manifested is in the development of two new programming languages, Swift and Go.
+The current technology landscape is often driven by two major companies: Apple and Google. With market capitalizations of \$623.61 billion \footnote{\url{http://finance.yahoo.com/quote/aapl}} and \$554.6 billion \footnote{\url{http://finance.yahoo.com/quote/goog}}, respectively, Apple (\$AAPL) and Google (\$GOOG) are the two highest valued public companies in the world at the time of writing. Along with making top-class products that millions of consumers use on a regular basis, both Apple and Google have continually contributed to an ecosystem of tools built for developers to create new software, whether for their platforms or not. In the past decade, one way this has manifested is in the development of two new programming languages, Swift and Go.
 
 The similar statuses of Apple and Google as technology behemoths of the modern world, as well as the similar timing of the releases of Swift and Go, drives us to explore first what pushed these companies to develop two new programming languages and second how these two languages are similar and how they differ. We will explore this by first looking at the historical context and initial goals of these languages, then look to the outside influences of each language, followed by a comparison of the design decisions made for each, finally we will conclude with a consideration of the future prospects for each language.
 
@@ -81,9 +81,10 @@ go build hello.go
 ./hello
 \end{minted}
 
-Both Go and Swift are compiled languages by design \footnote{\url{https://gcc.gnu.org/onlinedocs/gccgo/}} \footnote{\url{https://swift.org/compiler-stdlib/#standard-library-design}}. Go is designed explicitly for fast build times and accomplishes this with fast dependency analysis [19]. The Go compiler is part of the GNU tools, while Swift compiles to machine language using LLVM [20] [21].
+Both Go and Swift are compiled languages by design \footnote{\url{https://gcc.gnu.org/onlinedocs/gccgo/}} \footnote{\url{https://swift.org/compiler-stdlib/#standard-library-design}}. Go is designed explicitly for fast build times and accomplishes this with fast dependency analysis \footnote{\url{http://stackoverflow.com/questions/2976630/how-does-go-compile-so-quickly}}. The Go compiler is part of the GNU tools, while Swift compiles to machine language using LLVM \footnote{\url{https://gcc.gnu.org/onlinedocs/gccgo/}} \footnote{\url{stackoverflow.com/questions/24052386/does-swift-compile-to-native-
+code}}.
 
-Swift is strongly and statically typed, meaning that all variables must have a type that is defined or inferred at compile-time and that these types cannot change at run-time [22]. Type inference occurs when initializing a variable that has not been explicitly typed, though typing can also be explicitly declared, consider the following example:
+Swift is strongly and statically typed, meaning that all variables must have a type that is defined or inferred at compile-time and that these types cannot change at run-time \footnote{\url{www.aidanf.net/learn-swift/types_and_type_inference}}. Type inference occurs when initializing a variable that has not been explicitly typed, though typing can also be explicitly declared, consider the following example:
 
 \begin{minted}{swift}
 /* example of type inference */ 
@@ -116,13 +117,15 @@ var hello_world = hello + world
 hello_world = 125
 \end{minted}
 
-Swift has no true primitive types; rather there is only the distinction between named types and compound types [23]. The Int, UInt, Float, Double, String, Character and Boolean types, often primitive or basic types in other languages, are all named types in Swift and are all defined in the standard library as structs [24]. Swift also supports the Optional type, which represents a variable that either has a value or has a nil value [25].
+Swift has no true primitive types; rather there is only the distinction between named types and compound types \footnote{\url{https://developer.apple.com/library/content/documentation/Swift/
+Conceptual/Swift_Programming_Language/Types.html}}. The Int, UInt, Float, Double, String, Character and Boolean types, often primitive or basic types in other languages, are all named types in Swift and are all defined in the standard library as structs \footnote{\url{https://developer.apple.com/library/content/documentation/Swift/
+Conceptual/Swift_Programming_Language/Types.html}}. Swift also supports the Optional type, which represents a variable that either has a value or has a nil value \footnote{\url{https://www.tutorialspoint.com/swift/swift_data_types.htm}}.
 
-Go implements a collection of basic types, which include bool, string, int, uint, byte (alias for uint8 ), rune (alias for int32 ), float32, float64, complex64, and complex128 [26].
+Go implements a collection of basic types, which include bool, string, int, uint, byte (alias for uint8 ), rune (alias for int32 ), float32, float64, complex64, and complex128 \footnote{\url{https://tour.golang.org/basics/11}}.
 
 While implemented differently, Swift and Go provide relatively similar built-in types. Their main differences are Go’s native support for complex numbers—which must be hacked together with tuples in Swift—and Swift’s native support for optional types—which must be hacked together with variadic parameters in Go.
 
-If-else statements in Swift and Go are almost identical [27] [28]:
+If-else statements in Swift and Go are almost identical \footnote{\url{https://developer.apple.com/library/content/documentation/Swift/ Conceptual/Swift_Programming_Language/ControlFlow.html}} \footnote{\url{https://golang.org/doc/effective_go.html#control-structures}}:
 
 \begin{minted}{swift}
 // Swift
@@ -146,9 +149,9 @@ if name == "Barack Obama" {
 }
 \end{minted}
 
-Both Swift and Go support fairly expressive switch statements; however, Swift has the benefit of supporting optionals and Go has the benefit of representing switches without pattern matching, avoiding the requirement that each case is a constant—making Go switch statements more like extended if-else statements [27] [28].
+Both Swift and Go support fairly expressive switch statements; however, Swift has the benefit of supporting optionals and Go has the benefit of representing switches without pattern matching, avoiding the requirement that each case is a constant—making Go switch statements more like extended if-else statements \footnote{\url{https://developer.apple.com/library/content/documentation/Swift/ Conceptual/Swift_Programming_Language/ControlFlow.html}} \footnote{\url{https://golang.org/doc/effective_go.html#control-structures}}.
 
-Neither language supports implicit fall-throughs, both support multiple cases as comma separated lists, and both support interval matching/checking. In Swift, switch statements must always be exhaustive, while Go has no such requirement [27] [28].
+Neither language supports implicit fall-throughs, both support multiple cases as comma separated lists, and both support interval matching/checking. In Swift, switch statements must always be exhaustive, while Go has no such requirement \footnote{\url{https://developer.apple.com/library/content/documentation/Swift/ Conceptual/Swift_Programming_Language/ControlFlow.html}} \footnote{\url{https://golang.org/doc/effective_go.html#control-structures}}.
 
 Such differences between switch statements in Swift and Go can be examined in the following example:
 
@@ -157,8 +160,8 @@ Such differences between switch statements in Swift and Go can be examined in th
 switch (firstName, lastName) {
 case ("Barack", "Obama"):
     print("Hello Mr. President")
-case (_, “Obama”), (_, "Biden"):
-    print("Have you seen Mr. President?”)
+case (_, "Obama"), (_, "Biden"):
+    print("Have you seen Mr. President?")
 default:
     print("Hello \(name)")
 }
@@ -193,7 +196,7 @@ repeat {
 } while hand.count < 5
 \end{minted}
 
-Go on the other hand does not have a do-while or repeat-while style loop. Instead, Go has only one for-loop that takes influence from C, but combines the functionality of the while and for loops, as is done in the following [28]:
+Go on the other hand does not have a do-while or repeat-while style loop. Instead, Go has only one for-loop that takes influence from C, but combines the functionality of the while and for loops, as is done in the following \footnote{\url{https://golang.org/doc/effective_go.html#control-structures}}:
 
 \begin{minted}{go}
 for _, card := range deck {
@@ -212,7 +215,7 @@ for i := 0; i < 5; i++ {
 
 \section{Object Oriented Programming Support}
 
-Throughout Apple’s history, many of its frameworks have been built around the Object Oriented Programming paradigm. In order to support backward compatibility with Apple’s main API, Cocoa, and run within Objective-C’s runtime, Swift was built with thorough object oriented support and readily allows for encapsulation, polymorphism, and inheritance [29].
+Throughout Apple’s history, many of its frameworks have been built around the Object Oriented Programming paradigm. In order to support backward compatibility with Apple’s main API, Cocoa, and run within Objective-C’s runtime, Swift was built with thorough object oriented support and readily allows for encapsulation, polymorphism, and inheritance \footnote{\url{https://www.weheartswift.com/object-oriented-programming-swift/}}.
 
 To illustrate, consider the following simple class hierarchy example in Swift:
 
@@ -251,15 +254,16 @@ class Tesla: Car {
 }
 \end{minted}
 
-While Swift offers good support for the object-oriented paradigm, many Swift developers favor a similar but decidedly different paradigm that Swift also readily supports called Protocol Oriented Programming. The protocol-oriented paradigm emphasizes generalization and interfaces over inheritance and sub-classing, which many argue allows for clearer, lighter, and more modular code [30] [31].
+While Swift offers good support for the object-oriented paradigm, many Swift developers favor a similar but decidedly different paradigm that Swift also readily supports called Protocol Oriented Programming. The protocol-oriented paradigm emphasizes generalization and interfaces over inheritance and sub-classing, which many argue allows for clearer, lighter, and more modular code \footnote{\url{krakendev.io/blog/subclassing-can-suck-and-heres-why}} \footnote{\url{https://www.andrewcbancroft.com/2016/06/12/is-protocol-oriented-swift-
+better-than-object-oriented-swift/}}.
 
-Whether or not Go supports Object Oriented Programming is very much a matter of definition. The official project documentations points towards the unsatisfying answer of “Yes and no” [32]. Go supports the creation of something similar to an object via the struct, a custom data type. However, due to its lack of inheritance, attempting to emulate the above Swift example in Go is not straightforward [33] [34].
+Whether or not Go supports Object Oriented Programming is very much a matter of definition. The official project documentations points towards the unsatisfying answer of “Yes and no” \footnote{\url{https://golang.org/doc/faq#Is_Go_an_object-oriented_language}}. Go supports the creation of something similar to an object via the struct, a custom data type. However, due to its lack of inheritance, attempting to emulate the above Swift example in Go is not straightforward \footnote{\url{http://spf13.com/post/is-go-object-oriented/}} \footnote{\url{https://nathany.com/good/}}.
 
 Thus, support for the object-oriented paradigm provides one key difference between the two languages—Swift is designed with native support for Object Oriented Programming, whereas Go’s support is somewhat lacking.
 
 \section{Concurrent Programming Support}
 
-Go was designed to be a language that could be scaled across multiple processors—giving it a fundamental native support for concurrency. To make a function capable of running concurrently with other functions, simply use the language defined go keyword before invoking the function to run it as a goroutine [35] [36]. For example, consider the slightly modified version of our hello world program from before:
+Go was designed to be a language that could be scaled across multiple processors—giving it a fundamental native support for concurrency. To make a function capable of running concurrently with other functions, simply use the language defined go keyword before invoking the function to run it as a goroutine \footnote{\url{https://www.golang-book.com/books/intro/10}} \footnote{\url{https://divan.github.io/posts/go_concurrency_visualize/}}. For example, consider the slightly modified version of our hello world program from before:
 
 \begin{minted}{go}
 package main
@@ -280,17 +284,19 @@ func main() {
 }
 \end{minted}
 
-Go also supports communication and synchronization between concurrent goroutine functions using the chan keyword to create “channels” [35].
+Go also supports communication and synchronization between concurrent goroutine functions using the chan keyword to create “channels” \footnote{\url{https://www.golang-book.com/books/intro/10}}.
 
-When it comes to supporting concurrent programming in Swift, things are much less straightforward. Rather than being built into the language, Swift supports concurrency through Apple’s Grand Central Dispatch API, which allows developers to schedule different tasks with dispatch queues and specify whether the tasks are added to the serial queue or to a concurrent queue, and at which level of priority [37] [38]. Because concurrency is supported through an Apple API rather than being explicit in the language’s  design, using it is currently very much coupled to iOS or macOS development [39].
+When it comes to supporting concurrent programming in Swift, things are much less straightforward. Rather than being built into the language, Swift supports concurrency through Apple’s Grand Central Dispatch API, which allows developers to schedule different tasks with dispatch queues and specify whether the tasks are added to the serial queue or to a concurrent queue, and at which level of priority \footnote{\url{ttps://developer.apple.com/videos/play/wwdc2016/720/}} \footnote{\url{http://www.appcoda.com/ios-concurrency/}}. Because concurrency is supported through an Apple API rather than being explicit in the language’s  design, using it is currently very much coupled to iOS or macOS development \footnote{\url{https://developer.apple.com/library/content/documentation/General/
+Conceptual/ConcurrencyProgrammingGuide/Introduction/
+Introduction.html#//apple_ref/doc/uid/TP40008091-CH1-SW1}}.
 
 Here arises another fundamental difference between Swift and Go—Swift only somewhat supports concurrent programming but in a way that is a bit cumbersome to implement and that relies on Apple API's, while in Go, concurrency is fundamentally built into the language.
 
 \section{Future Prospects}
 
-Both Swift and Go seem to be languages with promising futures. Looking at the public Github repositories for each, it is not obvious which is being more actively worked on by the open source community. Many more people have forked or starred the Swift repository and it has roughly 10,000 more commits, despite having been released as an open source project for less time [40]. However, Go also has more people who have contributed to the language, with almost twice the number of public contributors as Swift [41].
+Both Swift and Go seem to be languages with promising futures. Looking at the public Github repositories for each, it is not obvious which is being more actively worked on by the open source community. Many more people have forked or starred the Swift repository and it has roughly 10,000 more commits, despite having been released as an open source project for less time \footnote{\url{https://github.com/apple/swift}}. However, Go also has more people who have contributed to the language, with almost twice the number of public contributors as Swift \footnote{\url{https://github.com/golang/go}}.
 
-Looking at the popular open source projects being built with Go, it seems that Go’s future will be defined by its power as a server side language for large and highly distributed systems [42]. Swift’s future seems to be a bit less clearly defined. Undoubtedly it will continue to be the development language for all Apple related software, including iOS, macOS, watchOS, and tvOS. However, looking at the current projects being explored with Swift, it seems likely that Swift will also be defined by its versatility as a powerful modern compiled language, with many potential applications outside of the Apple ecosystem from server side applications to integrations in cross-platform developer toolkits [43].
+Looking at the popular open source projects being built with Go, it seems that Go’s future will be defined by its power as a server side language for large and highly distributed systems \footnote{\url{https://github.com/trending/go?since=monthly}}. Swift’s future seems to be a bit less clearly defined. Undoubtedly it will continue to be the development language for all Apple related software, including iOS, macOS, watchOS, and tvOS. However, looking at the current projects being explored with Swift, it seems likely that Swift will also be defined by its versatility as a powerful modern compiled language, with many potential applications outside of the Apple ecosystem from server side applications to integrations in cross-platform developer toolkits \footnote{\url{https://github.com/trending/swift?since=monthly}}.
 
 \section{Final Remarks}
 
