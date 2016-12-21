@@ -201,19 +201,19 @@ repeat {
 } while hand.count < 5
 \end{minted}
 
-Go on the other hand does not have a do-while or repeat-while style loop. Instead, Go has only one for-loop that takes influence from C, but combines the functionality of the while and for loops, as is done in the following:
+Go on the other hand does not have a do-while or repeat-while style loop. Instead, Go has only one for-loop structure, which takes influence from C; however, it elegantly combines the functionality of the while and for loops, as is shown by the following:
 
 \begin{minted}{go}
 for _, card := range deck {
     fmt.Println(card.value, " of ", card.suit)
 }
 
-for i := 0; i < deck.count; i++ {
+for len(deck) > 0 {
     card := deck.pop()
     fmt.Println(card.value, " of ", card.suit)
 }
 
-for i := 0; i < 5; i++ {
+for len(hand) < 5 {
     hand.push(deck.pop())
 }
 \end{minted}
