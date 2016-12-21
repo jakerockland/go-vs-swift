@@ -271,6 +271,7 @@ Go was designed to be a language that could be scaled across multiple processors
 \begin{minted}{go}
 package main
 import "fmt"
+import "os"
 
 /* simple hello function */
 func hello(name string) {
@@ -279,7 +280,7 @@ func hello(name string) {
 
 /* concurrently will run for all names passed in as args */
 func main() {
-    var argsWithoutProg := os.Args[1:]
+    argsWithoutProg := os.Args[1:]
 
     for _, arg := range argsWithoutProg {
         go hello(arg)
