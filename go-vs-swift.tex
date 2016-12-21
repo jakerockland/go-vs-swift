@@ -81,6 +81,8 @@ go build hello.go
 ./hello
 \end{minted}
 
+Note that Go does support a `println' function that does not require importing from the standard library; however, this function reports to `stderr', rather than `stdout', and is not guaranteed to stay in the language \footnote{\url{https://golang.org/ref/spec#Bootstrapping}}
+
 Both Go and Swift are compiled languages by design \footnote{\url{https://gcc.gnu.org/onlinedocs/gccgo/}} \footnote{\url{https://swift.org/compiler-stdlib/#standard-library-design}}. Go is designed explicitly for fast build times and accomplishes this with fast dependency analysis \footnote{\url{http://stackoverflow.com/questions/2976630/how-does-go-compile-so-quickly}}. The Go compiler is part of the GNU tools, while Swift compiles to machine language using LLVM \footnote{\url{https://gcc.gnu.org/onlinedocs/gccgo/}} \footnote{\url{stackoverflow.com/questions/24052386/does-swift-compile-to-native-
 code}}.
 
