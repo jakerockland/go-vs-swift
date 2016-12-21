@@ -120,6 +120,8 @@ var hello_world = hello + world
 hello_world = 125
 \end{minted}
 
+Note that in the above Go example before the variable `world' is assigned the value " world!", it is initialized with the zero-value of the empty string "" \footnote{\url{https://golang.org/ref/spec#The_zero_value}}. However, in the analogous Swift example the variable `world' is not initialized until it is explicitly assigned a value, in this case " world!".
+
 Swift has no true primitive types; rather there is only the distinction between named types and compound types \footnote{\url{https://developer.apple.com/library/content/documentation/Swift/
 Conceptual/Swift_Programming_Language/Types.html}}. The Int, UInt, Float, Double, String, Character and Boolean types, often primitive or basic types in other languages, are all named types in Swift and are all defined in the standard library as structs \footnote{\url{https://developer.apple.com/library/content/documentation/Swift/
 Conceptual/Swift_Programming_Language/Types.html}}. Swift also supports the Optional type, which represents a variable that either has a value or has a nil value \footnote{\url{https://www.tutorialspoint.com/swift/swift_data_types.htm}}.
