@@ -1,8 +1,8 @@
-filename=go-vs-swift.tex
+filename=go-vs-swift
 
-pdf: go-vs-swift
-    pdflatex --shell-escape ${filename}.tex
+pdf:
+	pdflatex --shell-escape ${filename}.tex
 
 clean:
-    rm -f ${filename}.{pdf,log,aux}
-    rm -rf _minted-${filename}
+	rm -f ${filename}.{pdf,log,aux}
+	rm -rf _minted-${filename}
