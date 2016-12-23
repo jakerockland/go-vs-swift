@@ -155,9 +155,7 @@ if name == "Barack Obama" {
 }
 \end{minted}
 
-Both Swift and Go support fairly expressive switch statements; however, Swift has the benefit of supporting optionals and Go has the benefit of representing switches without pattern matching, avoiding the requirement that each case is a constant—making Go switch statements more like extended if-else statements.
-
-Neither language supports implicit fall-throughs, both support multiple cases as comma separated lists, and both support interval matching/checking. In Swift, switch statements must always be exhaustive, while Go has no such requirement.
+Both Swift and Go support fairly expressive switch statements; however, Swift has the benefit of supporting optionals. Neither language supports implicit fall-throughs, both support multiple cases as comma separated lists, and both support interval matching/checking. In Swift, switch statements must always be exhaustive, while Go has no such requirement.
 
 Such differences between switch statements in Swift and Go can be examined in the following example:
 
@@ -169,7 +167,7 @@ case ("Barack", "Obama"):
 case (_, "Obama"), (_, "Biden"):
     print("Have you seen Mr. President?")
 default:
-    print("Hello \(name)")
+    print("Hello \(firstName)")
 }
 \end{minted}
 
@@ -181,7 +179,21 @@ case firstName == "Barack" && lastName == "Obama":
 case lastName == "Obama" || lastName == "Biden":
     fmt.Println("Have you seen Mr. President?")
 default:
-    fmt.Println("Hello ", name)
+    fmt.Println("Hello ", firstName)
+}
+\end{minted}
+
+ Go has the benefit of representing switches without pattern matching, avoiding the requirement that each case is a constant—making Go switch statements more like extended if-else statements. Such behavior can also be achieved in Swift using the `where' keyword, as shown in this modified version of the above example:
+
+ \begin{minted}{swift}
+// Swift
+switch (firstName, lastName) {
+case _ where firstName == "Barack" && lastName == "Obama":
+    print("Hello Mr. President")
+case _ where lastName == "Obama" || lastName == "Biden":
+    print("Have you seen Mr. President?")
+default:
+    print("Hello \(firstName)")
 }
 \end{minted}
 
