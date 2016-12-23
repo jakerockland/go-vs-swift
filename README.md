@@ -5,6 +5,10 @@
 
 My final research project for CSCV 372: Comparative Programming Langugages
 
+## Abstract
+
+This project stands as a comparative exploration of Go and Swift, the recent flagship languages developed by Google and Apple, respectively. Specifically, I would like to explore first what pushed these modern tech behemoths to develop two new programming languages and second how these two languages are similar and how they differ, given that they were released at relatively similar times.
+
 ## License
 
 Copyright 2016 Jacob Rockland
