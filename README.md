@@ -1,6 +1,8 @@
 # Go vs. Swift
 ## The Languages of The Modern Tech Giants
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.322656.svg)](https://doi.org/10.5281/zenodo.322656)
+
 ## About
 
 My final research project for CSCV 372: Comparative Programming Langugages
