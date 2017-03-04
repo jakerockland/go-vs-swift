@@ -7,7 +7,7 @@
 
 \title{Go vs. Swift: The Languages of The Modern Tech Giants}
 \author{Jake Rockland \\ github.com/jakerockland/go-vs-swift}
-\date{December 20, 2016}
+\date{March 4, 2017}
 
 \usepackage{url}
 
@@ -26,7 +26,7 @@ This project stands as a comparative exploration of Go and Swift, the recent fla
 
 \section{Introduction}
 
-The current technology landscape is often driven by two major companies: Apple and Google. With market capitalizations of \$623.61 billion \footnote{\url{http://finance.yahoo.com/quote/aapl}} and \$554.6 billion \footnote{\url{http://finance.yahoo.com/quote/goog}}, respectively, Apple (\$AAPL) and Google (\$GOOG) are the two highest valued public companies in the world at the time of writing. Along with making top-class products that millions of consumers use on a regular basis, both Apple and Google have continually contributed to an ecosystem of tools built for developers to create new software, whether for their platforms or not. In the past decade, one way this has manifested is in the development of two new programming languages, Swift and Go.
+The current technology landscape is often driven by two major companies: Apple and Google. With market capitalizations of \$729.01 billion \footnote{\url{http://finance.yahoo.com/quote/aapl}} and \$575.73 billion \footnote{\url{http://finance.yahoo.com/quote/goog}}, respectively, Apple (\$AAPL) and Google (\$GOOG) are the two highest valued public companies in the world at the time of writing. Along with making top-class products that millions of consumers use on a regular basis, both Apple and Google have continually contributed to an ecosystem of tools built for developers to create new software, whether for their platforms or not. In the past decade, one way this has manifested is in the development of two new programming languages, Swift and Go.
 
 The similar statuses of Apple and Google as technology behemoths of the modern world, as well as the similar timing of the releases of Swift and Go, drives us to explore first what pushed these companies to develop two new programming languages and second how these two languages are similar and how they differ. We will explore this by first looking at the historical context and initial goals of these languages, then look to the outside influences of each language, followed by a comparison of the design decisions made for each, finally we will conclude with a consideration of the future prospects for each language.
 
@@ -275,9 +275,61 @@ class Tesla: Car {
 While Swift offers good support for the object-oriented paradigm, many Swift developers favor a similar but decidedly different paradigm that Swift also readily supports called Protocol Oriented Programming. The protocol-oriented paradigm emphasizes generalization and interfaces over inheritance and sub-classing, which many argue allows for clearer, lighter, and more modular code \footnote{\url{krakendev.io/blog/subclassing-can-suck-and-heres-why}} \footnote{\url{https://www.andrewcbancroft.com/2016/06/12/is-protocol-oriented-swift-
 better-than-object-oriented-swift/}}.
 
-Whether or not Go supports Object Oriented Programming is very much a matter of definition. The official project documentations points towards the unsatisfying answer of “Yes and no” \footnote{\url{https://golang.org/doc/faq#Is_Go_an_object-oriented_language}}. Go supports the creation of something similar to an object via the struct, a custom data type. However, due to its lack of inheritance, attempting to emulate the above Swift example in Go is not straightforward \footnote{\url{http://spf13.com/post/is-go-object-oriented/}} \footnote{\url{https://nathany.com/good/}}.
+Whether or not Go supports Object Oriented Programming is very much a matter of definition. The official project documentations points towards the unsatisfying answer of “Yes and no” \footnote{\url{https://golang.org/doc/faq#Is_Go_an_object-oriented_language}}. Go supports the creation of something similar to an object via the struct, a custom data type. Go lacks support for inheritance, but allows those who wish to embrace the object oriented design paradigm to do so through composition instead—favoring design patterns similar to those found in Swift's protocol-oriented paradigm. \footnote{\url{http://spf13.com/post/is-go-object-oriented/}} \footnote{\url{https://nathany.com/good/}}.
 
-Thus, support for the object-oriented paradigm provides one key difference between the two languages—Swift is designed with native support for Object Oriented Programming, whereas Go’s support is somewhat lacking.
+To illustrate this compositional approach, consider the following implementation of the Tesla example in Go:
+
+\begin{minted}{go}
+/* base `Car` type */
+type Car struct {
+    Make string
+    Year int
+}
+
+/* `Car` type constructor */
+func NewCar(make string, year int) Car {
+    return Car{make, year}
+}
+
+/* returns the value for given car */
+func (c Car) value() float64 {
+    switch {
+    case c.Year >= 2000 && c.Year < 2010: return 6500.0
+    case c.Year >= 2010 && c.Year < 2020: return 9000.0
+    default: return 3000.0
+    }
+}
+
+/* `Tesla` type, composed of `Car` type */
+type Tesla struct {
+    Car
+}
+
+/* `Tesla` type constructor */
+func NewTesla(year int) Tesla {
+    return Tesla{NewCar("Tesla", year)}
+}
+
+/* overrides the value for Tesla cars */
+func (t Tesla) value() float64 {
+    switch {
+    case t.Year >= 2010 && t.Year < 2015: return 18000.0
+    default: return 24000.0
+    }
+}
+
+/* interface for car value */
+type CarValue interface {
+    value() float64
+}
+
+/* shared value function, returns the value of given car */
+func value(c CarValue) float64 {
+    return c.value()
+}
+\end{minted}
+
+Thus, support for the object-oriented paradigm provides one key difference between the two languages—Swift is designed with native support for Object Oriented Programming, both in through inheritance and composition, whereas Go’s support is limited to a compositional approach.
 
 \section{Concurrent Programming Support}
 
