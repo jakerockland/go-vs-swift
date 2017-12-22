@@ -1,7 +1,7 @@
 # Go vs. Swift
 ## The Languages of The Modern Tech Giants
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.322656.svg)](https://doi.org/10.5281/zenodo.322656)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1125197.svg)](https://doi.org/10.5281/zenodo.1125197)
 
 ## About
 
